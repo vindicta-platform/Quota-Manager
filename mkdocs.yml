@@ -1,0 +1,25 @@
+site_name: Quota Manager
+site_description: Usage tracking and budget allocation
+site_url: https://vindicta-platform.github.io/Quota-Manager/
+
+repo_name: vindicta-platform/Quota-Manager
+repo_url: https://github.com/vindicta-platform/Quota-Manager
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: blue-grey
+      accent: amber
+  font:
+    text: Outfit
+    code: JetBrains Mono
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Scheduling: scheduling.md
+  - Contributing: contributing.md
+
+plugins:
+  - search

@@ -1,11 +1,11 @@
 # Feature Proposal: Quota Forecasting & Smart Throttling
 
-**Proposal ID**: FEAT-008  
-**Author**: Unified Product Architect (Autonomous)  
-**Created**: 2026-02-01  
-**Status**: Draft  
-**Priority**: High  
-**Target Repository**: Quota-Manager  
+**Proposal ID**: FEAT-008
+**Author**: Unified Product Architect (Autonomous)
+**Created**: 2026-02-01
+**Status**: Draft
+**Priority**: High
+**Target Repository**: Quota-Manager
 
 ---
 
@@ -75,16 +75,16 @@ Quota-Manager/
 ```python
 class QuotaForecaster:
     """Predict quota usage based on historical patterns."""
-    
+
     def predict_hourly_usage(self, hour: int) -> int:
         """Predict usage for a specific hour (0-23)."""
-        
+
     def calculate_surplus(self, hour: int) -> int:
         """Calculate expected surplus quota for background tasks."""
-        
+
     def recommend_batch_window(self) -> tuple[int, int]:
         """Recommend optimal time window for batch processing."""
-        
+
 class UsagePattern:
     hourly_avg: dict[int, float]    # Hour -> avg requests
     daily_trend: float              # Growth rate
@@ -99,7 +99,7 @@ HUMAN_RESERVE_PERCENTAGE = 50  # Always reserve 50% for human requests
 def allocate_quota(total_quota: int, current_hour: int) -> QuotaBudget:
     human_reserve = total_quota * HUMAN_RESERVE_PERCENTAGE / 100
     predicted_human = forecaster.predict_hourly_usage(current_hour)
-    
+
     # Background gets unused human reserve + any surplus
     background_budget = human_reserve - predicted_human
     return QuotaBudget(
@@ -125,18 +125,18 @@ def allocate_quota(total_quota: int, current_hour: int) -> QuotaBudget:
 ### User Stories
 
 #### US-001: Human Priority
-**As a** platform user  
-**I want** my requests to never be blocked by background tasks  
+**As a** platform user
+**I want** my requests to never be blocked by background tasks
 **So that** I always have a responsive experience
 
 #### US-002: Efficient Background Processing
-**As a** system operator  
-**I want** background tasks to use surplus quota  
+**As a** system operator
+**I want** background tasks to use surplus quota
 **So that** we maximize API utilization without waste
 
 #### US-003: Proactive Alerts
-**As a** platform administrator  
-**I want** alerts before quota exhaustion  
+**As a** platform administrator
+**I want** alerts before quota exhaustion
 **So that** I can take preventive action
 
 ### Acceptance Criteria
